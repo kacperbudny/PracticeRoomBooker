@@ -1,6 +1,6 @@
 # PracticeRoomBooker
 
-PracticeRommBooker is a full-stack application that allows booking a practice room. It's mostly built for personal needs and as a fun pet project to explore some of the technologies.
+PracticeRoomBooker is a full-stack application that allows booking a practice room. It's mostly built for personal needs and as a fun pet project to explore some of the technologies.
 
 ## Features & progress
 
