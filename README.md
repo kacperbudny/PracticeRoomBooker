@@ -4,9 +4,9 @@ PracticeRommBooker is a full-stack application that allows booking a practice ro
 
 ## Features & progress
 
-- [] Auth with pre-configured accounts
-- [] Booking practice room with a calendar-like UI
-- [] Admin panel
+- [ ] Auth with pre-configured accounts
+- [ ] Booking practice room with a calendar-like UI
+- [ ] Admin panel
 
 ## Setup
 
