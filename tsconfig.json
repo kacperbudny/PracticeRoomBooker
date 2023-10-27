@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "noEmit": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+    },
+    "exclude": [
+      "packages/**/tests/**",
+      "packages/**/dist/**"
+   ],
+    "references": [
+     {
+        "path": "./packages/backend"
+     },
+     {
+        "path": "./packages/frontend"
+     }
+   ]
+   }
