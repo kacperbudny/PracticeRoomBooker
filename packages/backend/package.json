@@ -7,7 +7,9 @@
   },
   "dependencies": {
     "@booker/common": "1.0.0",
-    "fastify": "^4.24.3"
+    "fastify": "^4.24.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",

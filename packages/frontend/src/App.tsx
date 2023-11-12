@@ -1,10 +1,25 @@
-import { FormEvent } from "react";
-import { Button, Form, Header, Segment } from "semantic-ui-react";
+import { ChangeEvent, useState } from "react";
+import {
+  Button,
+  Form,
+  Header,
+  InputOnChangeData,
+  Segment,
+} from "semantic-ui-react";
 import styled from "styled-components";
 
 function App() {
-  const handleSubmit = (e: FormEvent) => {
-    console.log(e);
+  const [formData, setFormData] = useState({});
+
+  const handleSubmit = () => {
+    console.log(formData);
+  };
+
+  const handleChange = (
+    _: ChangeEvent<HTMLInputElement>,
+    { name, value }: InputOnChangeData,
+  ) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -13,8 +28,20 @@ function App() {
         <Segment padded>
           <Header as="h2">Zaloguj się</Header>
           <Form onSubmit={handleSubmit}>
-            <Form.Input label="E-mail" placeholder="E-mail" type="email" />
-            <Form.Input label="Hasło" placeholder="Hasło" type="password" />
+            <Form.Input
+              label="E-mail"
+              placeholder="E-mail"
+              type="email"
+              name="email"
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="Hasło"
+              placeholder="Hasło"
+              type="password"
+              name="password"
+              onChange={handleChange}
+            />
             <Button type="submit" color="teal" fluid>
               Zaloguj się
             </Button>
@@ -37,4 +64,5 @@ const Center = styled.div`
 
 const WidthContainer = styled.div`
   width: 100%;
+  padding: 16px;
 `;
