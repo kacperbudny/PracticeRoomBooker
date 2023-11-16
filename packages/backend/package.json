@@ -7,12 +7,15 @@
   },
   "dependencies": {
     "@booker/common": "1.0.0",
+    "drizzle-orm": "^0.29.0",
     "fastify": "^4.24.3",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "postgres": "^3.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",
+    "drizzle-kit": "^0.20.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
