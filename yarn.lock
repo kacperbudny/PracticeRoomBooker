@@ -26,7 +26,8 @@ __metadata:
   resolution: "@booker/backend@workspace:packages/backend"
   dependencies:
     "@booker/common": 1.0.0
-    "@types/node": ^20.8.9
+    "@types/node": ^20.9.1
+    dotenv: ^16.3.1
     drizzle-kit: ^0.20.2
     drizzle-orm: ^0.29.0
     fastify: ^4.24.3
@@ -924,12 +925,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.9":
-  version: 20.8.9
-  resolution: "@types/node@npm:20.8.9"
+"@types/node@npm:^20.9.1":
+  version: 20.9.1
+  resolution: "@types/node@npm:20.9.1"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 0c05f3502a9507ff27e91dd6fd574fa6f391b3fafedcfe8e0c8d33351fb22d02c0121f854e5b6b3ecb9a8a468407ddf6e7ac0029fb236d4c7e1361ffc758a01f
+  checksum: bb893c6790733dac32818c1ca170fa466622dec39a0ade4639463e1358cb811771e242accbd065e7a1bfe59adc989c0ee59be65e462d3a0ab49043426f0b7637
   languageName: node
   linkType: hard
 
@@ -1791,6 +1792,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.3.1":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
+  languageName: node
+  linkType: hard
+
 "dreamopt@npm:~0.8.0":
   version: 0.8.0
   resolution: "dreamopt@npm:0.8.0"
@@ -1823,7 +1831,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-orm@npm:^0.29.0":
+"drizzle-orm@npm:*, drizzle-orm@npm:^0.29.0":
   version: 0.29.0
   resolution: "drizzle-orm@npm:0.29.0"
   peerDependencies:
