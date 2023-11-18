@@ -1,12 +1,12 @@
 {
-  "id": "d719dbbe-b9cf-43e6-9650-be6d92201896",
+  "id": "5e3b7fa1-9b89-4681-90b7-d8d3f4408a89",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
     "users": {
       "name": "users",
-      "schema": "",
+      "schema": "booker",
       "columns": {
         "id": {
           "name": "id",
@@ -49,7 +49,9 @@
     }
   },
   "enums": {},
-  "schemas": {},
+  "schemas": {
+    "booker": "booker"
+  },
   "_meta": {
     "schemas": {},
     "tables": {},

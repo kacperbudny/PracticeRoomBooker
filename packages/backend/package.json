@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "dev": "ts-node src/index.ts",
-    "migrate": "drizzle-kit generate:pg"
+    "migrate": "drizzle-kit generate:pg && ts-node src/persistence/migrate.ts"
   },
   "dependencies": {
     "@booker/common": "1.0.0",

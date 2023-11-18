@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 export const config = {
   database: {
     database: process.env.DB_NAME,
