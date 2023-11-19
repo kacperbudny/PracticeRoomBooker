@@ -6,13 +6,62 @@
     "ecmaVersion": 2021
   },
 
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier", "import"],
   "extends": [
     "prettier",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
   ],
   "rules": {
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-unused-vars": "warn",
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "packages/backend/src/api/",
+            "from": "packages/backend/src/domain/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/api/",
+            "from": "packages/backend/src/persistence/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/application/",
+            "from": "packages/backend/src/api/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/domain/",
+            "from": "packages/backend/src/api/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/domain/",
+            "from": "packages/backend/src/application/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/domain/",
+            "from": "packages/backend/src/persistence/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/persistence/",
+            "from": "packages/backend/src/api/",
+            "message": "Importing between these layers is forbidden."
+          },
+          {
+            "target": "packages/backend/src/domain/",
+            "from": "packages/backend/src/application/",
+            "message": "Importing between these layers is forbidden."
+          }
+        ]
+      }
+    ]
   }
 }
