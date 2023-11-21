@@ -11,10 +11,10 @@
     "prettier",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended"
+    "plugin:import/typescript"
   ],
   "rules": {
-    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
     "@typescript-eslint/no-unused-vars": "warn",
     "import/no-restricted-paths": [
       "error",
@@ -63,5 +63,16 @@
         ]
       }
     ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "packages/*/tsconfig.json"
+      }
+    }
   }
 }

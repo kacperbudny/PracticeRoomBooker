@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.6.4",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "dev": "ts-node src/index.ts",
+    "dev": "ts-node src/api/api.ts",
     "migrate": "drizzle-kit generate:pg --config=./src/persistence/drizzle.config.ts && ts-node src/persistence/migrate.ts"
   },
   "dependencies": {

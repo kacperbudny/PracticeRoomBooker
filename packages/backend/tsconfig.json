@@ -7,7 +7,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "types": ["node"],
-    "paths": { "src/*": ["./src/*"] }
+    "paths": { "src/*": ["./src/*"] },
+    "baseUrl": "./"
   },
   "include": ["src", "*.ts"],
   "lib": ["es2015"]

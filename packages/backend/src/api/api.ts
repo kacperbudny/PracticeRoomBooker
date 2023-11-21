@@ -1,10 +1,9 @@
-import fastify from "fastify";
+import Fastify from "fastify";
+import { userRoutes } from "src/api/routes/users";
 
-const server = fastify({ logger: true });
+const server = Fastify({ logger: true });
 
-server.get("/", async () => {
-  return "Hello there! 👋";
-});
+server.register(userRoutes);
 
 server.listen({ port: 8080 }, (err, address) => {
   if (err) {
