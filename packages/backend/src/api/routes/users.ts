@@ -1,7 +1,7 @@
-import { FastifyInstance } from "fastify";
+import { FastifyPluginAsync } from "fastify";
 
-export async function userRoutes(fastify: FastifyInstance) {
+export const userRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get("/login", { schema: {} }, async (req, res) => {
     return;
   });
-}
+};

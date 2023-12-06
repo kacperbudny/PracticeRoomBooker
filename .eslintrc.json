@@ -26,11 +26,6 @@
             "message": "Importing between these layers is forbidden."
           },
           {
-            "target": "packages/backend/src/api/",
-            "from": "packages/backend/src/persistence/",
-            "message": "Importing between these layers is forbidden."
-          },
-          {
             "target": "packages/backend/src/application/",
             "from": "packages/backend/src/api/",
             "message": "Importing between these layers is forbidden."
