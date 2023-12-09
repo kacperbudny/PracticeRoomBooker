@@ -6,7 +6,7 @@
     "module": "NodeNext",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "./src/api/types"],
     "paths": { "src/*": ["./src/*"] },
     "baseUrl": "./"
   },
