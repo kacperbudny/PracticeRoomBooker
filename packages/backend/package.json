@@ -4,7 +4,7 @@
   "types": "types/fastify.d.ts",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "dev": "ts-node-dev --project tsconfig.json ./src/api/api.ts",
+    "dev": "ts-node-dev --project tsconfig.json -r tsconfig-paths/register ./src/api/api.ts",
     "migrate": "drizzle-kit generate:pg --config=./src/persistence/drizzle.config.ts && ts-node src/persistence/migrate.ts"
   },
   "dependencies": {
@@ -12,9 +12,11 @@
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.29.0",
     "fastify": "^4.24.3",
+    "fastify-type-provider-zod": "^1.1.9",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "postgres": "^3.4.3"
+    "postgres": "^3.4.3",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.9.1",

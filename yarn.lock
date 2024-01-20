@@ -59,6 +59,7 @@ __metadata:
     drizzle-kit: ^0.20.2
     drizzle-orm: ^0.29.0
     fastify: ^4.24.3
+    fastify-type-provider-zod: ^1.1.9
     passport: ^0.6.0
     passport-local: ^1.0.0
     postgres: ^3.4.3
@@ -66,6 +67,7 @@ __metadata:
     ts-node-dev: ^2.0.0
     tsconfig-paths: ^4.2.0
     typescript: ^5.2.2
+    zod: ^3.22.4
   languageName: unknown
   linkType: soft
 
@@ -4151,6 +4153,18 @@ __metadata:
   version: 2.2.0
   resolution: "fast-uri@npm:2.2.0"
   checksum: edac64d50628f21d562cdc19ea86f5af00902dbb09d2f96fff5974e5317157825e9aa163af9defd11a0818aac6ea2e9958597bed98dd041200a08a976809d08b
+  languageName: node
+  linkType: hard
+
+"fastify-type-provider-zod@npm:^1.1.9":
+  version: 1.1.9
+  resolution: "fastify-type-provider-zod@npm:1.1.9"
+  dependencies:
+    zod-to-json-schema: ^3.17.1
+  peerDependencies:
+    fastify: ^4.0.0
+    zod: ^3.14.2
+  checksum: 86792031057cf3807a2e77ef41b16161d94c89ab95bd6284574502351df9c4d1e1621d4f7e7f3f14cd81aec9923c3a4f61c8889d5abb3b57e52ee9c0015056e1
   languageName: node
   linkType: hard
 
@@ -9897,7 +9911,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.20.2, zod@npm:^3.20.6":
+"zod-to-json-schema@npm:^3.17.1":
+  version: 3.22.3
+  resolution: "zod-to-json-schema@npm:3.22.3"
+  peerDependencies:
+    zod: ^3.22.4
+  checksum: 2747a3d1514f579006939c0edd6a420acae65ad016df223b09c4a542cbc8c0ae61b4d7b391228a211cde973635ed49c47b1449791982f3b32d799319bb174f42
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.20.2, zod@npm:^3.20.6, zod@npm:^3.22.4":
   version: 3.22.4
   resolution: "zod@npm:3.22.4"
   checksum: 80bfd7f8039b24fddeb0718a2ec7c02aa9856e4838d6aa4864335a047b6b37a3273b191ef335bf0b2002e5c514ef261ffcda5a589fb084a48c336ffc4cdbab7f

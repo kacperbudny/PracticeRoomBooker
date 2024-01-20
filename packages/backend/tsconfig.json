@@ -11,8 +11,5 @@
     "baseUrl": "./"
   },
   "include": ["src", "*.ts"],
-  "lib": ["es2015"],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  "lib": ["es2015"]
 }
