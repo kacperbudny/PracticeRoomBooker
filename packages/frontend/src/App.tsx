@@ -9,10 +9,17 @@ import {
 import styled from "styled-components";
 
 function App() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(formData);
+    await fetch("http://localhost:8080/login", {
+      body: JSON.stringify(formData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   const handleChange = (

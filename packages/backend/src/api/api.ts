@@ -12,6 +12,7 @@ import { users } from "src/persistence/schema";
 import { eq } from "drizzle-orm";
 import { db } from "src/persistence/persistence";
 import { pbkdf2, timingSafeEqual } from "node:crypto";
+import cors from "@fastify/cors";
 
 const server = Fastify({ logger: true });
 
@@ -43,7 +44,7 @@ passport.use(
             throw err;
           }
 
-          if (!timingSafeEqual(user.password, hashedPassword)) {
+          if (!timingSafeEqual(Buffer.from(user.password), hashedPassword)) {
             return cb(null, false, { message: "Invalid credentials." });
           }
 
@@ -58,6 +59,7 @@ passport.use(
 
 server
   .withTypeProvider<ZodTypeProvider>()
+  .register(cors)
   .register(async (instance, options) => {
     dbDecorator(instance, options);
     server.register(userRoutes);
