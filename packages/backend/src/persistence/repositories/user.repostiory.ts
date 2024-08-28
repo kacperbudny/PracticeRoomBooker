@@ -1,0 +1,25 @@
+import { eq } from "drizzle-orm";
+import { User } from "src/domain/user.entity";
+import { Db } from "src/persistence";
+import { users } from "src/persistence/schemas/user.schema";
+
+export class UserRepository {
+  private db: Db;
+
+  constructor(db: Db) {
+    this.db = db;
+  }
+
+  async getUserByEmail(email: string) {
+    const result = await this.db
+      .select()
+      .from(users)
+      .where(eq(users.email, email));
+
+    if (!result) {
+      return null;
+    }
+
+    return new User(result[0]);
+  }
+}

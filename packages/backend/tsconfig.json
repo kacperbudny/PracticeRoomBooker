@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "types": ["node", "./src/api/types"],
     "paths": { "src/*": ["./src/*"] },
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "strict": true
   },
   "include": ["src", "*.ts"],
   "lib": ["es2015"]

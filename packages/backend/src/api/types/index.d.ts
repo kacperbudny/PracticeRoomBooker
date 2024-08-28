@@ -1,4 +1,4 @@
-import { db } from "src/persistence/persistence";
+import { db } from "src/persistence";
 
 declare module "fastify" {
   interface FastifyInstance {

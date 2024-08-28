@@ -7,9 +7,9 @@ import {
 import { dbDecorator } from "src/api/decorators/db-decorator";
 import { userRoutes } from "src/api/routes/users";
 import { Strategy as LocalStrategy } from "passport-local";
-import { users } from "src/persistence/schema";
+import { users } from "src/persistence/schemas/user.schema";
 import { eq } from "drizzle-orm";
-import { db } from "src/persistence/persistence";
+import { db } from "src/persistence";
 import { pbkdf2, timingSafeEqual } from "node:crypto";
 import cors from "@fastify/cors";
 import fastifyPassport from "@fastify/passport";

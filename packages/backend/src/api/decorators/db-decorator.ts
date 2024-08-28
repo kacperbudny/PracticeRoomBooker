@@ -1,5 +1,5 @@
 import { FastifyPluginAsync } from "fastify";
-import { db } from "src/persistence/persistence";
+import { db } from "src/persistence";
 
 export const dbDecorator: FastifyPluginAsync = async (fastify) => {
   fastify.decorate("db", db);
