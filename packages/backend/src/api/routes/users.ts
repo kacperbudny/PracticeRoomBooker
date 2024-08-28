@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from "fastify";
 import z from "zod";
-import passport from "passport";
+import fastifyPassport from "@fastify/passport";
 
 export const userRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post(
@@ -16,7 +16,7 @@ export const userRoutes: FastifyPluginAsync = async (fastify) => {
         },
       },
     },
-    passport.authenticate("local", {
+    fastifyPassport.authenticate("local", {
       failureMessage: "failed",
       successMessage: "hurray",
     }),

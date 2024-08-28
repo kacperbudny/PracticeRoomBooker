@@ -55,6 +55,8 @@ __metadata:
   dependencies:
     "@booker/common": 1.0.0
     "@fastify/cors": ^9.0.1
+    "@fastify/passport": ^2.5.0
+    "@fastify/secure-session": ^7.5.1
     "@types/node": ^20.9.1
     "@types/passport": ^1.0.16
     "@types/passport-local": ^1.0.38
@@ -63,7 +65,6 @@ __metadata:
     drizzle-orm: ^0.29.0
     fastify: ^4.24.3
     fastify-type-provider-zod: ^1.1.9
-    passport: ^0.6.0
     passport-local: ^1.0.0
     postgres: ^3.4.3
     ts-node: ^10.9.1
@@ -595,6 +596,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/cookie@npm:^9.0.4":
+  version: 9.4.0
+  resolution: "@fastify/cookie@npm:9.4.0"
+  dependencies:
+    cookie-signature: ^1.1.0
+    fastify-plugin: ^4.0.0
+  checksum: cea22a03cc005468fc217da9d8e22b239e11ef7fea5f51189fa21ad0781baa430d9798eb72d51b74781be512b6b9e60bb2fc174c3e451e91584714cfb44fdfbf
+  languageName: node
+  linkType: hard
+
 "@fastify/cors@npm:^9.0.1":
   version: 9.0.1
   resolution: "@fastify/cors@npm:9.0.1"
@@ -625,6 +636,38 @@ __metadata:
   dependencies:
     fast-json-stringify: ^5.7.0
   checksum: 2734afabe2539d3e15d2bd9f8dfee756d9cd969f7303dc085dd91c744ff61742bb0d3ebd3b561cf3c32be54567048a634b4962f943eb6bd9ed3fbd71cbf6a4fa
+  languageName: node
+  linkType: hard
+
+"@fastify/flash@npm:^5.0.0":
+  version: 5.2.0
+  resolution: "@fastify/flash@npm:5.2.0"
+  dependencies:
+    fastify-plugin: ^4.0.0
+  checksum: 1548c6ba36380b3b77add10465825cee306304a9ccba4cce199910dbc77cbfc206fd65080140b71df04ea8354113fae9cee4c17f858dab6b3719b8765bbf10aa
+  languageName: node
+  linkType: hard
+
+"@fastify/passport@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@fastify/passport@npm:2.5.0"
+  dependencies:
+    "@fastify/flash": ^5.0.0
+    fastify-plugin: ^4.0.0
+  checksum: 85ee61befccab7b8b2000eb58498c3a4e87a31514f1a2355387bddc9ac0747f5848d244adf9cd9c1a45ea30387afee7bf7428304587940ebd4c32270a2a319e3
+  languageName: node
+  linkType: hard
+
+"@fastify/secure-session@npm:^7.5.1":
+  version: 7.5.1
+  resolution: "@fastify/secure-session@npm:7.5.1"
+  dependencies:
+    "@fastify/cookie": ^9.0.4
+    fastify-plugin: ^4.0.0
+    sodium-native: ^4.0.0
+  bin:
+    secure-session: genkey.js
+  checksum: a3ee6d47ae563c34a9617bc156348e57d05826e1cd47f6e4fc6a06dcd27ebd60fada4f82bc64ddfbc8dbe53eeca05733ea2130a20e7f42d0e9e46c207733b16e
   languageName: node
   linkType: hard
 
@@ -2979,6 +3022,13 @@ __metadata:
   bin:
     conventional-recommended-bump: cli.js
   checksum: e2d1f2f40f93612a6da035d0c1a12d70208e0da509a17a9c9296a05e73a6eca5d81fe8c6a7b45e973181fa7c876c6edb9a114a2d7da4f6df00c47c7684ab62d2
+  languageName: node
+  linkType: hard
+
+"cookie-signature@npm:^1.1.0":
+  version: 1.2.1
+  resolution: "cookie-signature@npm:1.2.1"
+  checksum: bb464aacac390b5d7d8ead2d6fff7c1c3b7378c7d0250921f48923fe889688e081ab33950448929db5f24d4f9f1506589a7ee1c685de8f12a3fdb30c49667ec5
   languageName: node
   linkType: hard
 
@@ -6731,6 +6781,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-gyp-build@npm:^4.8.0":
+  version: 4.8.1
+  resolution: "node-gyp-build@npm:4.8.1"
+  bin:
+    node-gyp-build: bin.js
+    node-gyp-build-optional: optional.js
+    node-gyp-build-test: build-test.js
+  checksum: fe6e95da6f4608c1a98655f6bf2fe4e8dd9c877cd13256056a8acaf585cc7f98718823fe9366be11b78c2f332d5a184b00cf07a4af96c9d8fea45f640c019f98
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:^10.0.0":
   version: 10.0.1
   resolution: "node-gyp@npm:10.0.1"
@@ -7506,17 +7567,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"passport@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "passport@npm:0.6.0"
-  dependencies:
-    passport-strategy: 1.x.x
-    pause: 0.0.1
-    utils-merge: ^1.0.1
-  checksum: ef932ad671d50de34765c7a53cd1e058d8331a82a6df09265a9c6c1168911aee4a7b5215803d0101110ab7f317e096b4954ca7e18fb2c33b9929f0bd17dbe159
-  languageName: node
-  linkType: hard
-
 "path-exists@npm:^3.0.0":
   version: 3.0.0
   resolution: "path-exists@npm:3.0.0"
@@ -7589,13 +7639,6 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: 5b1e2daa247062061325b8fdbfd1fb56dde0a448fb1455453276ea18c60685bdad23a445dc148cf87bc216be1573357509b7d4060494a6fd768c7efad833ee45
-  languageName: node
-  linkType: hard
-
-"pause@npm:0.0.1":
-  version: 0.0.1
-  resolution: "pause@npm:0.0.1"
-  checksum: e96ee581b68085e6f2ba5adbcb4d4a41fe88e5b514061e76df2fe1905f0f65f4fe5a843b538e9551122c6b9184ff4be266c2ee0ea4614702f9a3d04466d9f462
   languageName: node
   linkType: hard
 
@@ -8663,6 +8706,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sodium-native@npm:^4.0.0":
+  version: 4.1.1
+  resolution: "sodium-native@npm:4.1.1"
+  dependencies:
+    node-gyp: latest
+    node-gyp-build: ^4.8.0
+  checksum: 45941133773d70d20feb688e98023dcdc6b9fa33084ecd34f4fca66661c9e63587daf761d1ba9d46570564712613a567fd4b4934c6be6445bc49a0afc863c232
+  languageName: node
+  linkType: hard
+
 "sonic-boom@npm:^3.7.0":
   version: 3.7.0
   resolution: "sonic-boom@npm:3.7.0"
@@ -9630,13 +9683,6 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
-  languageName: node
-  linkType: hard
-
-"utils-merge@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "utils-merge@npm:1.0.1"
-  checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
   languageName: node
   linkType: hard
 
