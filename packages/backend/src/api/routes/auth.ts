@@ -2,21 +2,23 @@ import { FastifyPluginAsync } from "fastify";
 import z from "zod";
 import fastifyPassport from "@fastify/passport";
 
-export const userRoutes: FastifyPluginAsync = async (fastify) => {
+export const authRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post(
-    "/",
+    "/login",
     {
       schema: {
         body: z.object({
           email: z.string().email(),
           password: z.string().min(1).max(100),
-          role: z.enum(["user", "admin"]),
         }),
         response: {
           201: z.object({ token: z.string() }),
         },
       },
     },
-    async () => {},
+    fastifyPassport.authenticate("local", {
+      failureMessage: "failed",
+      successMessage: "hurray",
+    }),
   );
 };

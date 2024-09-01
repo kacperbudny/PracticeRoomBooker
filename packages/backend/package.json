@@ -5,7 +5,9 @@
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "dev": "ts-node-dev --project tsconfig.json -r tsconfig-paths/register ./src/api/api.ts",
-    "migrate": "drizzle-kit generate && ts-node --project tsconfig.json -r tsconfig-paths/register ./src/persistence/migrate.ts"
+    "migrate": "ts-node --project tsconfig.json -r tsconfig-paths/register ./src/persistence/migrate.ts",
+    "migrate:gen": "yarn migrate:gen --",
+    "migrate:gen:private": "drizzle-kit generate --name $1"
   },
   "dependencies": {
     "@booker/common": "1.0.0",

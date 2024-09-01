@@ -4,7 +4,7 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import { dbDecorator } from "src/api/decorators/db-decorator";
+import { dependenciesDecorator } from "src/api/decorators/db-decorator";
 import { userRoutes } from "src/api/routes/users";
 import { Strategy as LocalStrategy } from "passport-local";
 import { users } from "src/persistence/schemas/user.schema";
@@ -15,6 +15,7 @@ import cors from "@fastify/cors";
 import fastifyPassport from "@fastify/passport";
 import fastifySecureSession from "@fastify/secure-session";
 import { config } from "src/config";
+import { authRoutes } from "src/api/routes/auth";
 
 const server = Fastify({ logger: true });
 
@@ -74,8 +75,9 @@ server
   .withTypeProvider<ZodTypeProvider>()
   .register(cors)
   .register(async (instance, options) => {
-    dbDecorator(instance, options);
-    server.register(userRoutes);
+    dependenciesDecorator(instance, options);
+    server.register(authRoutes, { prefix: "/auth" });
+    server.register(userRoutes, { prefix: "/users" });
   });
 
 server.listen({ port: 8080 }, (err, address) => {

@@ -22,4 +22,21 @@ export class UserRepository {
 
     return new User(result[0]);
   }
+
+  async createUser(user: User) {
+    const result = await this.db
+      .insert(users)
+      .values({
+        email: user.email,
+        password: user.password,
+        role: user.role,
+      })
+      .returning();
+
+    if (!result) {
+      return null;
+    }
+
+    return new User(result[0]);
+  }
 }
