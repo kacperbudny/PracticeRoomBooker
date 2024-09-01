@@ -1,10 +1,10 @@
 {
-  "id": "5e3b7fa1-9b89-4681-90b7-d8d3f4408a89",
+  "id": "98845b6c-04a1-48ba-aa3f-71559dc1e8d5",
   "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "users": {
+    "booker.users": {
       "name": "users",
       "schema": "booker",
       "columns": {
@@ -14,12 +14,6 @@
           "primaryKey": true,
           "notNull": true,
           "default": "gen_random_uuid()"
-        },
-        "username": {
-          "name": "username",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
         },
         "email": {
           "name": "email",
@@ -32,6 +26,14 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "booker",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'user'"
         }
       },
       "indexes": {},
@@ -48,13 +50,23 @@
       }
     }
   },
-  "enums": {},
+  "enums": {
+    "booker.role": {
+      "name": "role",
+      "schema": "booker",
+      "values": [
+        "user",
+        "admin"
+      ]
+    }
+  },
   "schemas": {
     "booker": "booker"
   },
+  "sequences": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
+    "tables": {}
   }
 }

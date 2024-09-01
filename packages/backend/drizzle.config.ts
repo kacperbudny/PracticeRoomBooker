@@ -3,8 +3,8 @@ import "dotenv/config";
 import { config } from "src/config";
 
 export default {
-  schema: "./src/persistence/schema.ts",
+  schema: "./src/persistence/schemas/*",
   out: "./src/persistence/migrations",
-  driver: "pg",
+  dialect: "postgresql",
   dbCredentials: { ...config.database },
 } satisfies Config;
