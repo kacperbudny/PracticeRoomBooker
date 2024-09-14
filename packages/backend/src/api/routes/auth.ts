@@ -1,8 +1,8 @@
-import { FastifyPluginAsync } from "fastify";
+import { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
 import fastifyPassport from "@fastify/passport";
 
-export const authRoutes: FastifyPluginAsync = async (fastify) => {
+export const authRoutes: FastifyPluginAsyncZod = async (fastify) => {
   fastify.post(
     "/login",
     {

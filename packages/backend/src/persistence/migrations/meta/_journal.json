@@ -8,6 +8,13 @@
       "when": 1725224658566,
       "tag": "0000_init_db",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1726330798531,
+      "tag": "0001_user_max_values",
+      "breakpoints": true
     }
   ]
 }

@@ -4,7 +4,7 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import { dependenciesDecorator } from "src/api/decorators/db-decorator";
+import { dependenciesDecorator } from "src/api/decorators/dependencies.decorator";
 import { userRoutes } from "src/api/routes/users";
 import { Strategy as LocalStrategy } from "passport-local";
 import { users } from "src/persistence/schemas/user.schema";
