@@ -4,9 +4,9 @@
   "types": "types/fastify.d.ts",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "dev": "ts-node-dev --project tsconfig.json -r tsconfig-paths/register ./src/api/api.ts",
+    "dev": "ts-node-dev --project tsconfig.json -r tsconfig-paths/register ./src/api/index.ts",
     "migrate": "ts-node --project tsconfig.json -r tsconfig-paths/register ./src/persistence/migrate.ts",
-    "migrate:gen": "read -p 'Enter migration name: ' name && drizzle-kit generate --name $name --config=./src/persistence/drizzle.config.ts",
+    "migrate:gen": "drizzle-kit generate --config=./src/persistence/drizzle.config.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

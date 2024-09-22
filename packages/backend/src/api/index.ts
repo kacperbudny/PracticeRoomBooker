@@ -22,6 +22,8 @@ const server = Fastify({ logger: true });
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);
 
+console.log(config.session.secretKey);
+
 server.register(fastifySecureSession, {
   key: config.session.secretKey,
   cookie: {
