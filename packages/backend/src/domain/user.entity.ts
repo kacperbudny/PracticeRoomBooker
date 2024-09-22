@@ -7,6 +7,8 @@ type UserProps = {
   role: Role;
 };
 
+type CreateUserProps = Omit<UserProps, "id">;
+
 export class User {
   id: string;
   password: string;
@@ -18,5 +20,9 @@ export class User {
     this.password = props.password;
     this.email = props.email;
     this.role = props.role;
+  }
+
+  static create(props: CreateUserProps) {
+    return new User({ ...props, id: crypto.randomUUID() });
   }
 }

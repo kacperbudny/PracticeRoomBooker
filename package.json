@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "lerna run dev --stream",
     "lint": "lerna run lint --stream",
-    "migrate": "yarn workspace @booker/backend migrate"
+    "migrate": "yarn workspace @booker/backend migrate",
+    "migrate:gen": "yarn workspace @booker/backend migrate:gen",
+    "typecheck": "lerna run typecheck --stream"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.5",

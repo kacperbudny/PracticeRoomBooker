@@ -32,11 +32,10 @@ export const userRoutes: FastifyPluginAsyncZod = async (fastify) => {
 
       const hashedPassword = await hash(password, 10);
 
-      const newUser = new User({
+      const newUser = User.create({
         email,
         password: hashedPassword,
         role,
-        id: "TEMPORARY", // FIX THIS
       });
       await userRepository.createUser(newUser);
 
