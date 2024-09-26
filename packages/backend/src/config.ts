@@ -1,4 +1,6 @@
 import "dotenv/config";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import z from "zod";
 
 const configSchema = z.object({
@@ -11,7 +13,7 @@ const configSchema = z.object({
     port: z.number(),
   }),
   session: z.object({
-    secretKey: z.string(),
+    secretKey: z.instanceof(Buffer),
   }),
 });
 
@@ -25,6 +27,6 @@ export const config = configSchema.parse({
     port: Number(process.env.DB_PORT),
   },
   session: {
-    secretKey: process.env.SESSION_SECRET_KEY,
+    secretKey: readFileSync(join(__dirname, "secret-key")),
   },
 });

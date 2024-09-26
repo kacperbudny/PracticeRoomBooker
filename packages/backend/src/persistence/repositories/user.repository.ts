@@ -14,9 +14,10 @@ export class UserRepository {
     const result = await this.db
       .select()
       .from(users)
-      .where(eq(users.email, email));
+      .where(eq(users.email, email))
+      .limit(1);
 
-    if (!result) {
+    if (!result.length) {
       return null;
     }
 

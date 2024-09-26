@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 type Role = "user" | "admin";
 
 type UserProps = {
@@ -23,6 +25,6 @@ export class User {
   }
 
   static create(props: CreateUserProps) {
-    return new User({ ...props, id: crypto.randomUUID() });
+    return new User({ ...props, id: randomUUID() });
   }
 }

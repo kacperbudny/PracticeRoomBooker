@@ -37,6 +37,7 @@ export const userRoutes: FastifyPluginAsyncZod = async (fastify) => {
         password: hashedPassword,
         role,
       });
+
       await userRepository.createUser(newUser);
 
       // TODO: fix this

@@ -5,7 +5,7 @@ import {
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { dependenciesDecorator } from "src/api/decorators/dependencies.decorator";
-import { userRoutes } from "src/api/routes/users";
+import { userRoutes } from "src/api/routes/users.controller";
 import { Strategy as LocalStrategy } from "passport-local";
 import { users } from "src/persistence/schemas/user.schema";
 import { eq } from "drizzle-orm";
@@ -15,14 +15,14 @@ import cors from "@fastify/cors";
 import fastifyPassport from "@fastify/passport";
 import fastifySecureSession from "@fastify/secure-session";
 import { config } from "src/config";
-import { authRoutes } from "src/api/routes/auth";
+import { authRoutes } from "src/api/routes/auth.controller";
+import { UserRepository } from "src/persistence/repositories/user.repository";
+import { compare } from "bcrypt";
 
 const server = Fastify({ logger: true });
 
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);
-
-console.log(config.session.secretKey);
 
 server.register(fastifySecureSession, {
   key: config.session.secretKey,
@@ -38,35 +38,21 @@ server.register(fastifyPassport.secureSession());
 fastifyPassport.use(
   new LocalStrategy(async (email, password, cb) => {
     try {
-      const result = await db
-        .select()
-        .from(users)
-        .where(eq(users.email, email));
+      const userRepository = new UserRepository(db);
 
-      if (!result.length) {
+      const user = await userRepository.getUserByEmail(email);
+
+      if (!user) {
         return cb(null, false, { message: "Invalid credentials." });
       }
 
-      const user = result[0];
+      const isValidPassword = await compare(password, user.password);
 
-      pbkdf2(
-        password,
-        "test1234",
-        310000,
-        32,
-        "sha256",
-        (err, hashedPassword) => {
-          if (err) {
-            throw err;
-          }
+      if (!isValidPassword) {
+        return cb(null, false, { message: "Invalid credentials." });
+      }
 
-          if (!timingSafeEqual(Buffer.from(user.password), hashedPassword)) {
-            return cb(null, false, { message: "Invalid credentials." });
-          }
-
-          return cb(null, user);
-        },
-      );
+      cb(null, user);
     } catch (error) {
       return cb(error);
     }
