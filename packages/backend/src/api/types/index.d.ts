@@ -5,4 +5,8 @@ declare module "fastify" {
   interface FastifyInstance {
     dependencies: { userRepository: UserRepository };
   }
+
+  interface PassportUser {
+    id: string;
+  }
 }

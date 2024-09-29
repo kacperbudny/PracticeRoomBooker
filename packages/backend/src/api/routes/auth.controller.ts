@@ -6,19 +6,20 @@ export const authRoutes: FastifyPluginAsyncZod = async (fastify) => {
   fastify.post(
     "/login",
     {
+      // preValidation: fastifyPassport.authenticate("local", {
+      //   failureMessage: "failed",
+      //   successMessage: "hurray",
+      // }),
       schema: {
         body: z.object({
-          email: z.string().email(),
+          username: z.string().email(),
           password: z.string().min(1).max(100),
         }),
-        response: {
-          201: z.object({ token: z.string() }),
-        },
+        // response: {
+        //   201: z.object({ token: z.string() }),
+        // },
       },
     },
-    fastifyPassport.authenticate("local", {
-      failureMessage: "failed",
-      successMessage: "hurray",
-    }),
+    fastifyPassport.authenticate("local"),
   );
 };

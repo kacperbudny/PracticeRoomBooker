@@ -7,10 +7,7 @@ import {
 import { dependenciesDecorator } from "src/api/decorators/dependencies.decorator";
 import { userRoutes } from "src/api/routes/users.controller";
 import { Strategy as LocalStrategy } from "passport-local";
-import { users } from "src/persistence/schemas/user.schema";
-import { eq } from "drizzle-orm";
 import { db } from "src/persistence";
-import { pbkdf2, timingSafeEqual } from "node:crypto";
 import cors from "@fastify/cors";
 import fastifyPassport from "@fastify/passport";
 import fastifySecureSession from "@fastify/secure-session";
@@ -18,6 +15,7 @@ import { config } from "src/config";
 import { authRoutes } from "src/api/routes/auth.controller";
 import { UserRepository } from "src/persistence/repositories/user.repository";
 import { compare } from "bcrypt";
+import { User } from "src/domain/user.entity";
 
 const server = Fastify({ logger: true });
 
@@ -29,7 +27,7 @@ server.register(fastifySecureSession, {
   cookie: {
     httpOnly: true,
     secure: config.environment !== "local",
-    sameSite: "Lax",
+    // sameSite: "Lax",
   },
 });
 server.register(fastifyPassport.initialize());
@@ -58,6 +56,20 @@ fastifyPassport.use(
     }
   }),
 );
+
+fastifyPassport.registerUserSerializer<User, string>(async (user) => user.id);
+
+fastifyPassport.registerUserDeserializer<string, User>(async (id) => {
+  const userRepository = new UserRepository(db);
+  const user = await userRepository.getUserById(id);
+
+  // TODO: BETTER ERROR HANDLING
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  return user;
+});
 
 server
   .withTypeProvider<ZodTypeProvider>()

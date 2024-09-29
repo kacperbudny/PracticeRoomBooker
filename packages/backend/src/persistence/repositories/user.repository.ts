@@ -24,6 +24,20 @@ export class UserRepository {
     return new User(result[0]);
   }
 
+  async getUserById(id: string) {
+    const result = await this.db
+      .select()
+      .from(users)
+      .where(eq(users.id, id))
+      .limit(1);
+
+    if (!result.length) {
+      return null;
+    }
+
+    return new User(result[0]);
+  }
+
   async createUser(user: User) {
     const result = await this.db
       .insert(users)
